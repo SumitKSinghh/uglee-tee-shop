@@ -14,7 +14,104 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      order_items: {
+        Row: {
+          color: string
+          created_at: string
+          id: string
+          order_id: string
+          price: number
+          product_id: string
+          product_name: string
+          quantity: number
+          size: string
+        }
+        Insert: {
+          color: string
+          created_at?: string
+          id?: string
+          order_id: string
+          price: number
+          product_id: string
+          product_name: string
+          quantity: number
+          size: string
+        }
+        Update: {
+          color?: string
+          created_at?: string
+          id?: string
+          order_id?: string
+          price?: number
+          product_id?: string
+          product_name?: string
+          quantity?: number
+          size?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          created_at: string
+          currency: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          id: string
+          razorpay_order_id: string | null
+          razorpay_payment_id: string | null
+          shipping_address: string
+          shipping_city: string
+          shipping_pincode: string
+          shipping_state: string
+          status: string
+          total_amount: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          currency?: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          id?: string
+          razorpay_order_id?: string | null
+          razorpay_payment_id?: string | null
+          shipping_address: string
+          shipping_city: string
+          shipping_pincode: string
+          shipping_state: string
+          status?: string
+          total_amount: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          currency?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          id?: string
+          razorpay_order_id?: string | null
+          razorpay_payment_id?: string | null
+          shipping_address?: string
+          shipping_city?: string
+          shipping_pincode?: string
+          shipping_state?: string
+          status?: string
+          total_amount?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
